@@ -1,0 +1,58 @@
+.ADS-list {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  padding: 2rem;
+}
+
+.ADS-list .list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.ADS-list .list .list-item {
+  list-style: none;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 2rem;
+}
+
+.ADSS-card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 2rem 4rem;
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.ADSS-card .picture {
+  margin-bottom: 3.2rem;
+}
+
+.ADSS-card .footer {
+  display: flex;
+}
+
+.ADSS-card .footer .info {
+  flex: 1;
+}
+
+.ADSS-card .footer .info > * {
+  display: block;
+}
+
+.ADSS-card .footer .info .name {
+  color: #777;
+  font-size: 1.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.ADSS-card .footer .actions {
+  align-items: center;
+  display: flex;
+}
+
+.ADSS-card .footer .actions .no-stock {
+  color: #fb0707;
+  text-transform: uppercase;
+}

@@ -1,0 +1,11 @@
+.ADS-filters {
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  padding: 2rem;
+}
+
+.ADS-filters .filter {
+  margin-top: 1rem;
+}

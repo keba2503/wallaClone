@@ -1,0 +1,84 @@
+.app {
+  height: 100vh;
+}
+
+.app .app-header {
+  height: 60px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0px;
+}
+
+.app .app-main {
+  height: calc(100vh - 60px);
+  padding-top: 60px;
+}
+
+.app .app-main > * {
+  height: 100%;
+}
+
+.app .app-main .app-store {
+  display: flex;
+}
+
+.app .app-main .app-store .app-store-filters {
+  flex: 0 0 180px;
+}
+
+.app .app-main .app-store .app-store-list {
+  flex: 1 1 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.app .app-loading,
+.app .app-error {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+/* General styles for links */
+.link {
+  border-bottom: 1px solid #666;
+  color: #666;
+  font-family: inherit;
+  font-weight: 500;
+}
+
+.link:hover,
+.link.active {
+  color: #e76000;
+  border-color: #e76000;
+}
+
+/* General styles for buttons */
+.button {
+  background-color: #fff;
+  border: 1px solid #333;
+  cursor: pointer;
+  font-size: 1.2rem;
+  height: 36px;
+  letter-spacing: 0;
+  line-height: 1.7rem;
+  outline: none;
+  padding: 9px 36px 8px 28px;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.button:hover {
+  background-color: #e76000 !important;
+  border-color: #e76000 !important;
+  color: #fff;
+}
+
+.button.active {
+  background-color: #000;
+  border-color: #000;
+  color: #fff;
+}

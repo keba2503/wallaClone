@@ -1,0 +1,15 @@
+.header {
+  align-items: center;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.header .title {
+  font-family: 'Lobster', cursive;
+}
+
+.header .navbar .link {
+  margin-left: 2rem;
+}
