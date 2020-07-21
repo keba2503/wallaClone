@@ -11,11 +11,7 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-// function mapDispatchToProps(dispatch, ownProps) {
-//   return {
-//     addToCart: ADSSId => dispatch(addToCart(ADSSId)),
-//   };
-// }
+
 
 const mapDispatchToProps = {
   addToCart,

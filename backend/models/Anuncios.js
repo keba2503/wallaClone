@@ -14,11 +14,12 @@ const thumbnailRequester = new cote.Requester({
 //schematic creation
 //https://mongoosejs.com/docs/schematypes.html
 const anuncioSchema = mongoose.Schema({
+    id: { type: String, index: true },
     name: { type: String, index: true },
     price: { type: Number, index: true},
-    sale: { type: Boolean, index: true },
-    tags: { type: [String], index: true },
-    imagen:  String,
+    type: { type: String, index: true },
+    stock: {type: Number, index: true},
+    image:  String,
     
 });
 
@@ -55,10 +56,10 @@ anuncioSchema.methods.setFoto = async function (imageObject) {
 };
 
 
-//static list tags
-anuncioSchema.statics.Tags = function () {
-    return [ 'motor', 'mobile', 'lifestyle', 'work',];
-};
+//static list type
+// anuncioSchema.statics.type = function () {
+//     return [ 'motor', 'mobile', 'lifestyle', 'work',];
+// };
 
 
 

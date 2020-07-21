@@ -28,17 +28,27 @@ const Anuncios = require('../../models/Anuncios');
 
 router.get('/',  (req, res, next) => {
     try {
+        const id = req.query.id;
         const name = req.query.name;
         const price = req.query.price;
-        const tags  = req.query.tags
+        const type  = req.query.type;
+        const stock = req.query.stock;
         const sale = req.query.sale;
         const includeTotal = req.query.includeTotal === 'true'
         const limit = parseInt(req.query.limit) || 1000;
         const skip = parseInt(req.query.skip);
         const filter = {};
         
-        if (typeof tags !== 'undefined') {
-          filter.tags = tags;
+        if (typeof type !== 'undefined') {
+          filter.type = type;
+        }
+
+        if (typeof stock !== 'undefined') {
+          filter.stock = stock;
+        }
+
+        if (typeof id !== 'undefined') {
+          filter.id = id;
         }
 
         if (typeof name !== 'undefined') {
@@ -67,7 +77,7 @@ router.get('/tags', function (req, res) {
   res.json({tags: Anuncios.Tags() });
 });
 
-//Id search
+// Id search
 router.get('/:id', async (req, res, next) => {
     try {
         const _id = req.params.id;

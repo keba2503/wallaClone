@@ -1,118 +1,45 @@
-import { ADSS_TYPES } from '../constants';
+import axios from 'axios';
 
-const ADS = [
-  {
-    id: '1',
-    image: 'Alexa.jpg',
-    name: 'Alexa',
-    price: 1800,
-    stock: 10,
-    type: ADSS_TYPES.ELECTRONIC,
-  },
-  {
-    id: '2',
-    image: 'apple.jpg',
-    name: 'Apple Watch',
-    price: 3500,
-    stock: 10,
-    type: ADSS_TYPES.ELECTRONIC,
-  },
-  {
-    id: '3',
-    name: 'Iphone',
-    type: ADSS_TYPES.MOBILE,
-    price: 1990,
-    stock: 8,
-    image: 'iphone.jpg',
-  },
-  {
-    id: '4',
-    name: 'Mac',
-    type: ADSS_TYPES.LIFESTYLE,
-    price: 2500,
-    stock: 5,
-    image: 'mac.jpg',
-  },
-  {
-    id: '5',
-    name: 'Ipad',
-    type: ADSS_TYPES.LIFESTYLE,
-    price: 2500,
-    stock: 5,
-    image: 'ipad.jpg',
-  },
-  {
-    id: '6',
-    image: 'Alexa.jpg',
-    name: 'Alexa2',
-    price: 1800,
-    stock: 10,
-    type: ADSS_TYPES.ELECTRONIC,
-  },
-  {
-    id: '7',
-    image: 'apple.jpg',
-    name: 'Apple Watch2',
-    price: 3500,
-    stock: 10,
-    type: ADSS_TYPES.ELECTRONIC,
-  },
-  {
-    id: '8',
-    name: 'Iphone2',
-    type: ADSS_TYPES.MOBILE,
-    price: 1990,
-    stock: 8,
-    image: 'iphone.jpg',
-  },
-  {
-    id: '9',
-    name: 'Mac2',
-    type: ADSS_TYPES.LIFESTYLE,
-    price: 2500,
-    stock: 5,
-    image: 'mac.jpg',
-  },
-  {
-    id: '10',
-    name: 'Ipad2',
-    type: ADSS_TYPES.LIFESTYLE,
-    price: 2500,
-    stock: 5,
-    image: 'ipad.jpg',
-  },
-];
 
-const TIMEOUT = 1000;
-const ERROR_THRESHOLD = 0.95;
-const NETWORK_ERROR = 'Network Error.';
+const API_URL= 'https://localhost:3000/api';
 
-const simulateNetworkRequest = (config = {}) => () => {
-  const {
-    result = undefined,
-    errorMessage = NETWORK_ERROR,
-    timeout = TIMEOUT,
-    errorThreshold = ERROR_THRESHOLD,
-  } = config;
+
+const ADS = async () => {
+  try {
+      return await axios.get(`${API_URL}/anuncios`).then(res => {
+          return res.data.result;
+      });
+  }catch (e) {
+      console.log(e.message);
+      throw new Error(e.message);
+  }
+};
+
+const TIMEOUT = 500;
+
+const loading = (config = {}) => () => {
+  const {result = undefined,timeout = TIMEOUT,} = config;
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (Math.random() > errorThreshold) {
-        reject(new Error(errorMessage));
-      }
+    setTimeout(() => {    
       resolve(result);
     }, timeout);
   });
 };
 
+const getAllADS = ADS;
+
 export default {
-  getAllADS: simulateNetworkRequest({ result: ADS }),
-  checkoutCart: simulateNetworkRequest({
-    timeout: TIMEOUT * 2,
+   ADS,
+   getAllADS,
+   checkoutCart: loading({
+    timeout: TIMEOUT ,
   }),
-  addToCart: simulateNetworkRequest({
-    timeout: TIMEOUT / 2,
+   addToCart: loading({
+    timeout: TIMEOUT,
   }),
-  removeFromCart: simulateNetworkRequest({
-    timeout: TIMEOUT / 2,
+  removeFromCart: loading({
+    timeout: TIMEOUT,
   }),
+
+
 };

@@ -1,10 +1,19 @@
 'use strict';
 
+const ADSS_TYPES = {
+  ELECTRONIC: 'electronic',
+  LIFESTYLE: 'lifestyle',
+  MOBILE: 'mobile'
+ };
+ 
+
+
 require('dotenv').config();
 
 const conn = require('./lib/connectMongoose');
 const Anuncios = require('./models/Anuncios');
 const Users = require('./models/Users');
+
 
 conn.once('open', async () => {
     try {
@@ -23,79 +32,85 @@ async function initAnuncios() {
     await Anuncios.deleteMany();
     await Anuncios.insertMany([
       {
-        name: "Macbook",
-        sale: true,
-        price: 8000,
-        tags: ["lifestyle", "mobile", "electronic"],
-        imagen: "mac.jpg"
+        id: '1',
+        image: 'Alexa.jpg',
+        name: 'Alexa',
+        price: 1800,
+        stock: 10,
+        type: ADSS_TYPES.ELECTRONIC,
       },
-
       {
-        name: "Car",
-        sale: false,
-        price: 5000,
-        tags: ["lifestyle", "motor"],
-        imagen: "car.jpg"
+        id: '2',
+        image: 'apple.jpg',
+        name: 'Apple Watch',
+        price: 3500,
+        stock: 10,
+        type: ADSS_TYPES.ELECTRONIC,
       },
-
       {
-        name: "Ipad",
-        sale: false,
+        id: '3',
+        name: 'Iphone',
+        type: ADSS_TYPES.MOBILE,
+        price: 1990,
+        stock: 8,
+        image: 'iphone.jpg',
+      },
+      {
+        id: '4',
+        name: 'Mac',
+        type: ADSS_TYPES.LIFESTYLE,
         price: 2500,
-        tags: ["lifestyle", "mobile", "electronic"],
-        imagen: "ipad.jpg"
-      },
-
-      {
-        name: "Echo Dot (3.ª generación)",
-        sale: true,
-        price: 35,
-        tags: ["lifestyle", "mobile", "electronic"],
-        imagen: "echo.jpg"
+        stock: 5,
+        image: 'mac.jpg',
       },
       {
-        name: "Smarwathc",
-        sale: true,
-        price: 300,
-        tags: ["lifestyle", "mobile", "electronic"],
-        imagen: "apple.jpg"
+        id: '5',
+        name: 'Ipad',
+        type: ADSS_TYPES.LIFESTYLE,
+        price: 2500,
+        stock: 5,
+        image: 'ipad.jpg',
       },
       {
-        name: "apple watch 3",
-        sale: true,
-        price: 200,
-        tags: ["lifestyle", "mobile", "electronic"],
-        imagen: "apple.jpg"
+        id: '6',
+        image: 'Alexa.jpg',
+        name: 'Alexa2',
+        price: 1800,
+        stock: 10,
+        type: ADSS_TYPES.ELECTRONIC,
       },
       {
-        name: "apple watch 5",
-        sale: true,
-        price: 35,
-        tags: ["lifestyle", "mobile", "electronic"],
-        imagen: "apple.jpg"
+        id: '7',
+        image: 'apple.jpg',
+        name: 'Apple Watch2',
+        price: 3500,
+        stock: 10,
+        type: ADSS_TYPES.ELECTRONIC,
       },
       {
-        name: "Alexa",
-        sale: true,
-        price: 30,
-        tags: ["lifestyle", "mobile", "electronic"],
-        imagen: "alexa.jpg"
+        id: '8',
+        name: 'Iphone2',
+        type: ADSS_TYPES.MOBILE,
+        price: 1990,
+        stock: 8,
+        image: 'iphone.jpg',
       },
       {
-        name: "Bicicleta",
-        sale: true,
-        price: 300,
-        tags: ["lifestyle", "mobile", "electronic"],
-        imagen: "bici.jpg"
+        id: '9',
+        name: 'Mac2',
+        type: ADSS_TYPES.LIFESTYLE,
+        price: 2500,
+        stock: 5,
+        image: 'mac.jpg',
       },
       {
-        name: "Iphone",
-        sale: true,
-        price: 1000,
-        tags: [ "lifestyle", "mobile", "electronic"],
-        imagen: "iphone.jpg"
-    },
-
+        id: '10',
+        name: 'Ipad2',
+        type: ADSS_TYPES.LIFESTYLE,
+        price: 2500,
+        stock: 5,
+        image: 'ipad.jpg',
+      },
     ]);
   }
 
