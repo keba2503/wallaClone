@@ -8,6 +8,7 @@ const nodemailerTransport = require('../lib/nodemailer');
 //https://mongoosejs.com/docs/schematypes.html
 const usersSchema = mongoose.Schema({
  email : {type: String, unique: true},
+ username : {type: String, unique: true},
  password : {type: String},
 });
 

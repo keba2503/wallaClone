@@ -118,10 +118,12 @@ async function initAnuncios() {
     await Users.deleteMany(); 
     await Users.insertMany([
       {
+        username: 'example',
         email: 'user@example.es',
         password:  await Users.hashPassword('1234'),
       },
       {
+        username: 'keba2503',
         email: 'keba2503@gmail.com',
         password: await Users.hashPassword('1234'),
       }

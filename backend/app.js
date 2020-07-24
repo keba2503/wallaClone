@@ -50,6 +50,7 @@ const login = require('./routes/login');
 // const jwtAuth = require('./lib/jwtAuth');
 
 app.use('/api/anuncios', require('./routes/api/anuncios'));
+app.use('/users', require('./routes/api/users'));
 app.use('/api/loginjwt', login.postJWT);
 
 
