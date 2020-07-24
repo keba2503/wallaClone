@@ -122,11 +122,7 @@ async function initAnuncios() {
         email: 'user@example.es',
         password:  await Users.hashPassword('1234'),
       },
-      {
-        username: 'keba2503',
-        email: 'keba2503@gmail.com',
-        password: await Users.hashPassword('1234'),
-      }
+    
     ]);
   }
 
