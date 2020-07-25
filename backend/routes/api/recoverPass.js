@@ -46,6 +46,8 @@ router.post("/", async (req, res, next) => {
 router.put("/", async (req, res, next) => {
   const email = app.get("email");
   const password = await Users.hashPassword(req.body.password);
+  const userData = req.body;
+  const users = new Users(userData)
 
   const user = await Users.findOne({ email: email });
 
@@ -63,13 +65,24 @@ router.put("/", async (req, res, next) => {
     }
   );
 
+  await users.sendEmail(
+    process.env.ADMIN_EMAIL,
+    "Recover password",
+    `
+    Su contraseña ha sido cambiada.
+    `
+    );
   app.set("email", null);
 
   res.send({
     success: true,
     result: resetPass,
-    msj: "your password has been restored",
+    msj: "Su contraseña ha sido cambiada",
   });
+
+ 
+  
+
 });
 
 module.exports = router;
