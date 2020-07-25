@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const Users = require('../../models/Users');
+const { getMaxListeners } = require('../../models/Users');
 
 //POST
 router.post("/", async (req, res, next) => {
@@ -38,7 +39,7 @@ router.post("/", async (req, res, next) => {
       msj: "Usuario guardado con exito",
     });
     //email
-    await user.sendEmail(process.env.ADMIN_EMAIL, 'Nuevo registro', `
+    await user.sendEmail('keba2503@gmail.com', 'Nuevo registro', `
       Te has registrado con exito.
     `);
 
@@ -61,6 +62,9 @@ router.get("/", async (req, res, next) => {
     next(err);
   }
 });
+
+
+//Recuperacion de contraseña
 
 
 
