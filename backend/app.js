@@ -53,6 +53,7 @@ app.use('/api/anuncios', require('./routes/api/anuncios'));
 app.use('/api/register', require('./routes/api/users'));
 app.use("/recoverpass", require("./routes/api/recoverPass"));
 app.use("/newpassword", require("./routes/api/recoverPass"));
+app.use("/details", require("./routes/api/details"));
 app.use('/api/loginjwt', login.postJWT);
 
 
